@@ -1,4 +1,4 @@
-FROM ubuntu:20.10
+FROM ubuntu:21.04
 RUN apt update && apt install -y openssh-client && rm -rf /var/lib/apt/lists/*
 VOLUME /root/.ssh
 ENV SSH_PORT=22
