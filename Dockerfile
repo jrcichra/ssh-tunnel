@@ -1,5 +1,7 @@
 FROM ubuntu:21.04
-RUN apt update && apt install -y openssh-client && rm -rf /var/lib/apt/lists/*
+WORKDIR /src/app
 VOLUME /root/.ssh
 ENV SSH_PORT=22
-CMD ssh -p ${SSH_PORT} -o ServerAliveInterval=60 -o ExitOnForwardFailure=yes -nNT -L 0.0.0.0:${LOCAL_PORT}:${REMOTE_ADDR}:${REMOTE_PORT} ${REMOTE_USER}@${REMOTE_HOST}
+RUN apt update && apt install -y openssh-client && rm -rf /var/lib/apt/lists/*
+COPY run.sh .
+CMD run.sh
