@@ -1,4 +1,4 @@
-FROM ubuntu:21.04
+FROM ubuntu:hirsute-20220113
 VOLUME /root/.ssh
 ENV SSH_PORT=22
 RUN apt update && apt install -y openssh-client && rm -rf /var/lib/apt/lists/*
